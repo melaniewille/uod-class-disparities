@@ -68,10 +68,10 @@ Our datasets will be available on [Hugging Face](https://huggingface.co/).
 
 Please download:
 
-- [**the localization datasets for DUO**]()
-- [**the classification datasets for DUO**]()
-- [**the localization datasets for RUOD-4C**]()
-- [**the classification datasets for RUOD-4C**]()
+- [**the localization datasets for DUO**](https://huggingface.co/datasets/melaniewille/uod-class-disparities-localization-study-DUO)
+- [**the classification datasets for DUO**](https://huggingface.co/datasets/melaniewille/uod-class-disparities-classification-study-DUO)
+- [**the localization datasets for RUOD-4C**](https://huggingface.co/datasets/melaniewille/uod-class-disparities-localization-study-RUOD-4C)
+- [**the classification datasets for RUOD-4C**](https://huggingface.co/datasets/melaniewille/uod-class-disparities-classification-study-RUOD-4C)
 
 and place them in the following folders within the repository:
 
@@ -240,7 +240,7 @@ Additional evaluation of bounding boxes and TIDE errors for localization is avai
 ## Acknowledgements
 This work was conducted at the **QUT Centre for Robotics**.
 
-We also thank the contributors of the DUO dataset - check out their [Github](https://github.com/chongweiliu/DUO) and paper:
+We also thank the contributors of the **DUO** dataset - check out their [Github](https://github.com/chongweiliu/DUO) and paper:
 ```
 @inproceedings{liu2021dataset,
   title={A dataset and benchmark of underwater object detection for robot picking},
@@ -251,7 +251,7 @@ We also thank the contributors of the DUO dataset - check out their [Github](htt
   organization={IEEE}
 }
 ```
-and the contributors of the RUOD dataset - check out their [Github](https://github.com/dlut-dimt/RUOD) and paper:
+and the contributors of the **RUOD** dataset - check out their [Github](https://github.com/dlut-dimt/RUOD) and paper:
 ```
 @article{fu2023rethinking,
   title={Rethinking general underwater object detection: Datasets, challenges, and solutions},
@@ -263,6 +263,10 @@ and the contributors of the RUOD dataset - check out their [Github](https://gith
   publisher={Elsevier}
 }
 ```
+
+We redistribute our derived versions of these two datasets according to:
+— a **private** permission for the **DUO** dataset from the original authors (email correspondence, October 2025). Further redistribution or commercial use may require additional consent from Liu et al.
+- the **Apache License 2.0** for the **RUOD** dataset, under which it was originally released. We release our subset RUOD-4C under the same license.
 
 
 
