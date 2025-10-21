@@ -57,6 +57,7 @@ cd uod-class-disparities
 
 Then create the environment using:
 ```bash
+cd pixi
 pixi install
 ```
 Pixi will automatically read the pixi.toml file and install all required dependencies.
