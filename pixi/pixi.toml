@@ -1,0 +1,156 @@
+[project]
+name = "object-detection-underwater"
+version = "0.1.0"
+description = "Object detection underwater"
+authors = ["Melanie Wille", "Scarlett Raine <sg.raine@qut.edu.au>", "Tobias Fischer <tobias.fischer@qut.edu.au>"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64"]
+preview = ["pixi-build"] 
+
+[system-requirements]
+linux = "4.12"
+libc = { family = "glibc", version = "2.22" }
+
+[feature.cuda]
+platforms = ["linux-64"]
+system-requirements = {cuda = "12"}
+
+[dependencies]
+python = "3.12.*"
+pip = "*"
+numpy = "<2"
+pytorch = ">=2.4"
+torchvision = "*"
+tqdm = "*"
+matplotlib = "*"
+scipy = "*"
+Pillow = ">=7.1"
+git = "*"
+natsort = "*"
+compilers = "*"
+cmake = "*"
+xformers = "*"
+pytorch-lightning = "*"
+pytorch-metric-learning = "*"
+timm = "*"
+h5py = "*"
+scikit-learn = "*"
+cython = "*"
+opencv = "*"
+jupyterlab = "*"
+wandb = "*"
+ultralytics = "*"
+pycocotools = "*"
+
+[feature.cuda.dependencies]
+cuda-version = "12.*"
+pytorch-gpu = "*"
+cuda-cudart-dev = "*"
+cuda-crt = "*"
+cudnn = "*"
+libcusparse-dev = "*"
+cuda-driver-dev = "*"
+cuda-nvcc = "*"
+cuda-nvrtc-dev = "*"
+cuda-nvtx-dev = "*"
+cuda-nvml-dev = "*"
+cuda-profiler-api = "*"
+cusparselt = "*"
+libcublas-dev = "*"
+libcudss-dev = "*"
+libcufile-dev = "*"
+libcufft-dev = "*"
+libcurand-dev = "*"
+libcusolver-dev = "*"
+
+[pypi-dependencies]
+yolo11_object_detection = { path = ".", editable = true }
+
+[environments]
+cuda = ["cuda"]
+
+[tasks]
+loc-DUO-yolo-all = {cmd = "exit 0", depends-on = ["run-loc-DUO-yolo-all-training", "run-loc-DUO-yolo-all-tests"] } 
+loc-DUO-yolo-all-training = {cmd = "exit 0", depends-on = ["run-loc-DUO-yolo-train-1", "run-loc-DUO-yolo-train-2", "run-loc-DUO-yolo-train-3"] }
+loc-DUO-yolo-all-tests = {cmd = "exit 0", depends-on = ["run-loc-DUO-yolo-test-1", "run-loc-DUO-yolo-test-2", "run-loc-DUO-yolo-test-3"] }
+loc-DUO-yolo-single-class = {cmd = "exit 0", depends-on = ["run-loc-DUO-yolo-train-1", "run-loc-DUO-yolo-test-1"] }
+loc-DUO-yolo-balanced = {cmd = "exit 0", depends-on = ["run-loc-DUO-yolo-train-2", "run-loc-DUO-yolo-test-2"] }
+loc-DUO-yolo-reduced = {cmd = "exit 0", depends-on = ["run-loc-DUO-yolo-train-3", "run-loc-DUO-yolo-test-3"] }
+loc-DUO-yolo-train-1 = { cmd = "python ../experimental-studies-DUO/localization_study/YOLO11/YOLO11_single_train.py" }  
+loc-DUO-yolo-train-2 = { cmd = "python ../experimental-studies-DUO/localization_study/YOLO11/YOLO11_balanced_train.py" } 
+loc-DUO-yolo-train-3 = { cmd = "python ../experimental-studies-DUO/localization_study/YOLO11/YOLO11_reduced_train.py" }           
+loc-DUO-yolo-test-1 = { cmd = "python ../experimental-studies-DUO/localization_study/YOLO11/YOLO11_single_test.py" }  
+loc-DUO-yolo-test-2 = { cmd = "python ../experimental-studies-DUO/localization_study/YOLO11/YOLO11_balanced_test.py" }  
+loc-DUO-yolo-test-3 = { cmd = "python ../experimental-studies-DUO/localization_study/YOLO11/YOLO11_reduced_test.py" }
+
+loc-DUO-ssd-all = {cmd = "exit 0", depends-on = ["run-loc-DUO-ssd-single-class", "run-loc-DUO-ssd-balanced", "run-loc-DUO-ssd-reduced"] } 
+loc-DUO-ssd-single-class = { cmd = "python ../experimental-studies-DUO/localization_study/SSD/SSD_single_class.py" }  
+loc-DUO-ssd-balanced = { cmd = "python ../experimental-studies-DUO/localization_study/SSD/SSD_balanced.py" } 
+loc-DUO-ssd-reduced = { cmd = "python ../experimental-studies-DUO/localization_study/SSD/SSD_reduced.py" }           
+
+
+cls-DUO-rn18-all = {cmd = "exit 0", depends-on = ["run-cls-DUO-rn18-imbalanced", "run-cls-DUO-rn18-balanced", "run-cls-DUO-rn18-reduced", "run-cls-DUO-rn18-weighted"] } 
+cls-DUO-rn18-imbalanced = { cmd = "python ../experimental-studies-DUO/classification_study/ResNet18/rn18_imbalanced_data_model.py" }  
+cls-DUO-rn18-balanced = { cmd = "python ../experimental-studies-DUO/classification_study/ResNet18/rn18_balanced_data_model.py" } 
+cls-DUO-rn18-reduced = { cmd = "python ../experimental-studies-DUO/classification_study/ResNet18/rn18_reduced_class_model.py" }           
+cls-DUO-rn18-weighted = { cmd = "python ../experimental-studies-DUO/classification_study/ResNet18/rn18_weighted_sampling_model.py" }           
+
+cls-DUO-mnv2-all = {cmd = "exit 0", depends-on = ["run-cls-DUO-mnv2-imbalanced", "run-cls-DUO-mnv2-balanced", "run-cls-DUO-mnv2-reduced", "run-cls-DUO-mnv2-weighted"] } 
+cls-DUO-mnv2-imbalanced = { cmd = "python ../experimental-studies-DUO/classification_study/MobileNetV2/mnv2_imbalanced_data_model.py" }  
+cls-DUO-mnv2-balanced = { cmd = "python ../experimental-studies-DUO/classification_study/MobileNetV2/mnv2_balanced_data_model.py" } 
+cls-DUO-mnv2-reduced = { cmd = "python ../experimental-studies-DUO/classification_study/MobileNetV2/mnv2_reduced_class_model.py" }           
+cls-DUO-mnv2-weighted = { cmd = "python ../experimental-studies-DUO/classification_study/MobileNetV2/mnv2_weighted_sampling_model.py" }           
+
+cls-DUO-ViT-all = {cmd = "exit 0", depends-on = ["run-cls-DUO-ViT-imbalanced", "run-cls-DUO-ViT-balanced", "run-cls-DUO-ViT-reduced", "run-cls-DUO-ViT-weighted"] } 
+cls-DUO-ViT-imbalanced = { cmd = "python ../experimental-studies-DUO/classification_study/VisionTransformer/ViT_imbalanced_data_model.py" }  
+cls-DUO-ViT-balanced = { cmd = "python ../experimental-studies-DUO/classification_study/VisionTransformer/ViT_balanced_data_model.py" } 
+cls-DUO-ViT-reduced = { cmd = "python ../experimental-studies-DUO/classification_study/VisionTransformer/ViT_reduced_class_model.py" }           
+cls-DUO-ViT-weighted = { cmd = "python ../experimental-studies-DUO/classification_study/VisionTransformer/ViT_weighted_sampling_model.py" }           
+
+
+
+
+
+
+loc-RUOD-4C-yolo-all = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-yolo-all-training", "run-loc-RUOD-4C-yolo-all-tests"] } 
+loc-RUOD-4C-yolo-all-training = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-yolo-train-1", "run-loc-RUOD-4C-yolo-train-2", "run-loc-RUOD-4C-yolo-train-3"] }
+loc-RUOD-4C-yolo-all-tests = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-yolo-test-1", "run-loc-RUOD-4C-yolo-test-2", "run-loc-RUOD-4C-yolo-test-3"] }
+loc-RUOD-4C-yolo-single-class = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-yolo-train-1", "run-loc-RUOD-4C-yolo-test-1"] }
+loc-RUOD-4C-yolo-balanced = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-yolo-train-2", "run-loc-RUOD-4C-yolo-test-2"] }
+loc-RUOD-4C-yolo-reduced = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-yolo-train-3", "run-loc-RUOD-4C-yolo-test-3"] }
+loc-RUOD-4C-yolo-train-1 = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/YOLO11/YOLO11_single_train.py" }  
+loc-RUOD-4C-yolo-train-2 = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/YOLO11/YOLO11_balanced_train.py" } 
+loc-RUOD-4C-yolo-train-3 = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/YOLO11/YOLO11_reduced_train.py" }           
+loc-RUOD-4C-yolo-test-1 = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/YOLO11/YOLO11_single_test.py" }  
+loc-RUOD-4C-yolo-test-2 = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/YOLO11/YOLO11_balanced_test.py" }  
+loc-RUOD-4C-yolo-test-3 = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/YOLO11/YOLO11_reduced_test.py" }
+
+loc-RUOD-4C-ssd-all = {cmd = "exit 0", depends-on = ["run-loc-RUOD-4C-ssd-single-class", "run-loc-RUOD-4C-ssd-balanced", "run-loc-RUOD-4C-ssd-reduced"] } 
+loc-RUOD-4C-ssd-single-class = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/SSD/SSD_single_class.py" }  
+loc-RUOD-4C-ssd-balanced = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/SSD/SSD_balanced.py" } 
+loc-RUOD-4C-ssd-reduced = { cmd = "python ../experimental-studies-RUOD-4C/localization_study/SSD/SSD_reduced.py" }   
+
+
+cls-RUOD-4C-rn18-all = {cmd = "exit 0", depends-on = ["run-cls-RUOD-4C-rn18-imbalanced", "run-cls-RUOD-4C-rn18-balanced", "run-cls-RUOD-4C-rn18-reduced", "run-cls-RUOD-4C-rn18-weighted"] } 
+cls-RUOD-4C-rn18-imbalanced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/ResNet18/rn18_imbalanced_data_model.py" }  
+cls-RUOD-4C-rn18-balanced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/ResNet18/rn18_balanced_data_model.py" } 
+cls-RUOD-4C-rn18-reduced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/ResNet18/rn18_reduced_class_model.py" }           
+cls-RUOD-4C-rn18-weighted = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/ResNet18/rn18_weighted_sampling_model.py" }           
+
+cls-RUOD-4C-mnv2-all = {cmd = "exit 0", depends-on = ["run-cls-RUOD-4C-mnv2-imbalanced", "run-cls-RUOD-4C-mnv2-balanced", "run-cls-RUOD-4C-mnv2-reduced", "run-cls-RUOD-4C-mnv2-weighted"] } 
+cls-RUOD-4C-mnv2-imbalanced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/MobileNetV2/mnv2_imbalanced_data_model.py" }  
+cls-RUOD-4C-mnv2-balanced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/MobileNetV2/mnv2_balanced_data_model.py" } 
+cls-RUOD-4C-mnv2-reduced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/MobileNetV2/mnv2_reduced_class_model.py" }           
+cls-RUOD-4C-mnv2-weighted = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/MobileNetV2/mnv2_weighted_sampling_model.py" }           
+
+cls-RUOD-4C-ViT-all = {cmd = "exit 0", depends-on = ["run-cls-RUOD-4C-ViT-imbalanced", "run-cls-RUOD-4C-ViT-balanced", "run-cls-RUOD-4C-ViT-reduced", "run-cls-RUOD-4C-ViT-weighted"] } 
+cls-RUOD-4C-ViT-imbalanced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/VisionTransformer/ViT_imbalanced_data_model.py" }  
+cls-RUOD-4C-ViT-balanced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/VisionTransformer/ViT_balanced_data_model.py" } 
+cls-RUOD-4C-ViT-reduced = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/VisionTransformer/ViT_reduced_class_model.py" }           
+cls-RUOD-4C-ViT-weighted = { cmd = "python ../experimental-studies-RUOD-4C/classification_study/VisionTransformer/ViT_weighted_sampling_model.py" }           
+
+
+
+
+
+fix-mps = { cmd = "sed -i '' 's/    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)/    if boxes.device.type == \"mps\":\\n        boxes = boxes.cpu()\\n        scores = scores.cpu()\\n    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)/' ./.pixi/envs/default/lib/python3.12/site-packages/torchvision/ops/boxes.py" }

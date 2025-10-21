@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: yolo11-object-detection
+Version: 0.1.0
+Summary: Experiments for our paper: Are All Marine Species Created Equal? Performance Disparities in Underwater Object Detection
+Author-email: Melanie Wille <melaniecarolin.wille@hdr.qut.edu.au>, Tobias Fischer <tobias.fischer@qut.edu.au>, Scarlett Raine <sg.raine@qut.edu.au>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yolo11-object-detection"
+version = "0.1.0"
+description = "Experiments for our paper: Are All Marine Species Created Equal? Performance Disparities in Underwater Object Detection"
+
+authors = [
+    {name = "Melanie Wille", email = "melaniecarolin.wille@hdr.qut.edu.au"},
+    {name = "Tobias Fischer", email = "tobias.fischer@qut.edu.au"},
+    {name = "Scarlett Raine", email = "sg.raine@qut.edu.au"},
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
