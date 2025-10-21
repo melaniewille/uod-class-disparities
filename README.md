@@ -265,7 +265,8 @@ and the contributors of the **RUOD** dataset - check out their [Github](https://
 ```
 
 We redistribute our derived versions of these two datasets according to:
-— a **private** permission for the **DUO** dataset from the original authors (email correspondence, October 2025). Further redistribution or commercial use may require additional consent from Liu et al.
+
+- a **private** permission for the **DUO** dataset from the original authors (email correspondence, October 2025). Further redistribution or commercial use may require additional consent from Liu et al.
 - the **Apache License 2.0** for the **RUOD** dataset, under which it was originally released. We release our subset RUOD-4C under the same license.
 
 
