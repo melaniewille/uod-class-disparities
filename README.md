@@ -36,14 +36,18 @@ If you do not have Pixi installed yet, you will need to do this once:
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
 ```
-Then restart your terminal or run:
+You might have to open a new terminal window after installation so the pixi command becomes available. You can verify the installation by running:
 ```bash
-source ~/.bashrc   # or ~/.zshrc
+pixi --version
 ```
+If it prints a version number, you’re ready to continue.
+
 **On Windows (PowerShell)**:
 ```powershell
 iwr -useb https://pixi.sh/install.ps1 | iex
 ```
+
+**Next**:
 
 Once completed, clone this repository and navigate into the directory:
 ```bash
