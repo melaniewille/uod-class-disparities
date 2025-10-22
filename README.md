@@ -149,10 +149,16 @@ The clssification results from ResNet18 were taken as average across three indep
 
 ## Quick Start
 Ensure you have cloned the repository, set up the environment and downloaded the datasets according to the [Installation](#installation) and [Datasets](#datasets) sections.
-To run the experiments, navigate into the [pixi/](./pixi/) folder and call the desired tasks:
+To run the experiments, navigate into the `pixi/` folder and run the desired tasks, using the task names specified in the [pixi.toml](./pixi/pixi.toml):
 
 ```bash
 cd pixi
+
+# run on CPU
+pixi run [task-name] 
+
+# or run on GPU
+pixi run -e cuda [task-name]
 ```
 for **all localization experiments on DUO**:
 ```bash
