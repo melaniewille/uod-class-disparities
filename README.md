@@ -102,7 +102,7 @@ and place them in the following folders within the repository:
     └── ... 
 ```
 
-Once the datasets are placed correctly, all experiments can be executed from the [pixi/](./pixi/) folder using the commands defined in [pixi.toml](./pixi/pixi.toml), as described in the [Quick Start](#quick-start) section.        
+Once the datasets are placed correctly, all experiments can be executed from the `pixi/` folder using the commands defined in [pixi.toml](./pixi/pixi.toml), as described in the [Quick Start](#quick-start) section.        
 
 ## Models
 We employ **YOLO11** and **SSD** object detection models in our **localization** study. Their training and testing scripts can be found in [experimental-studies-DUO/localization_study/](./experimental-studies-DUO/localization_study/)_architecture_ or [experimental-studies-RUOD-4C/localization_study/](./experimental-studies-RUOD-4C/localization_study/)_architecture_ for single-class, balanced and reduced dataset variations.
